@@ -4,30 +4,23 @@
 <title>OPERATE</title>
 </head>
 <body>
-<table border="0" cellspacing="0" cellpadding="10" height="5">
-	<tr>
-		<script src="menu.js?ver=1"></script>
-		<TD>
-
-<table border=3>
-	<tr><td>Modules/Towns: <span th:text="${townCount}"/></td>
-		<td>Rollingstock: <span th:text="${rollingStockCount}"/></td>
-		<TD>Consignees: <span th:text="${consigneeCount}"/></td>
-	</tr>
-	<tr><td>Drop Zones: <span th:text="${dropZoneCount}"/></td>
-		<TD>Car Requests: <span th:text="${carRequestCount}"/></td>
-		<TD>Trains: <span th:text="${trainCount}"/></td>
-	</tr>
-</table>
-
-<A href="/equipment">Equipment Register</A><br/>
-<A href="/modules">Modules/Towns</A><br/>
-<A href="/trains">Trains</A><br/>
-<A href="/trainlists">Trainlists</A><br/>
-<A href="/preferences">Preferences</A><br/>
-<A href="/index">Dashboard</A><br/>
-</TD>
-</tr>
-</table>
+    <H1>Dashboard</H1>
+    <table border="0" cellspacing="0" cellpadding="10" height="5">
+        <tr>
+            <script src="menu.js?ver=1"></script>
+            <TD>
+                <table border=3>
+                    <tr><td>Modules/Towns: <span th:text="${townCount}"/></td>
+                        <td>Rollingstock: <span th:text="${rollingStockCount}"/></td>
+                        <TD>Consignees: <span th:text="${consigneeCount}"/></td>
+                    </tr>
+                    <tr><td>Drop Zones: <span th:text="${dropZoneCount}"/></td>
+                        <TD>Car Requests: <span th:text="${carRequestCount}"/></td>
+                        <TD>Trains: <span th:text="${trainCount}"/></td>
+                    </tr>
+                </table>
+            </TD>
+        </tr>
+    </table>
 </body>
 </html>

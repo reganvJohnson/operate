@@ -12,7 +12,7 @@
   document.write('<p class="tocEntry">');
 
 
-  document.write('<a title="Trainlists" href="trainlists" class="toc">TrainLists</a>');
+  document.write('<a title="Trainlists" href="trainLists" class="toc">TrainLists</a>');
   document.write('<hr noshade size="1" color="#C0C0C0">');
   document.write('<p class="tocEntry">');
   document.write('<a title="Preferences" href="preferences" class="toc">Preferences</a>');
