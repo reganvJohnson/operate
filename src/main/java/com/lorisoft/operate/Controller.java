@@ -16,6 +16,9 @@ import javafx.scene.control.MenuItem;
 public class Controller implements Initializable {
 
     @FXML
+    public Label label1 = null;
+
+    @FXML
     private Label lbl1,lbl2;
 
     @FXML
@@ -34,7 +37,7 @@ public class Controller implements Initializable {
             if (btn1 != null) {
             System.out.println("menuItemModules");
             stage = (Stage) btn1.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/Modules.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/EquipmentRegistry.fxml"));
         }
         }
         else {
@@ -43,7 +46,7 @@ public class Controller implements Initializable {
             System.out.println(btn2);
             System.out.println(btn2.getScene());
             stage = (Stage) btn2.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/EquipmentRegister.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/EquipmentRegistry.fxml"));
         }
         }
         if (stage != null) {
@@ -65,7 +68,7 @@ public class Controller implements Initializable {
         }
         else{
             stage = (Stage) btn2.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/EquipmentRegister.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/EquipmentRegistry.fxml"));
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -75,5 +78,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println("in initialize");
+        label1.setText("THIS IS IT");
     }
 }
