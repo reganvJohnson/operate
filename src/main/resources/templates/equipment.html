@@ -9,7 +9,31 @@
         <tr>
             <script src="menu.js?ver=1"></script>
             <TD>
-Body goes here
+                <div th:switch="${allEquipment}">
+                    <h2 th:case="null">No equipment yet!</h2>
+                    <div th:case="*">
+                        <h2>Users</h2>
+                        <table border="3" cellspacing="0" cellpadding="10" height="5">
+                            <thead>
+                            <tr>
+                                <th>Car Class</th>
+                                <th>Description</th>
+                                <th>Short Description</th>
+                                <th>length</th>
+                                <th>notes</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="equipment : ${allEquipment}">
+                                <td th:text="${equipment.car_class}"></td>
+                                <td th:text="${equipment.description}"></td>
+                                <td th:text="${equipment.short_description}"></td>
+                                <td th:text="${equipment.length}"></td>
+                                <td th:text="${equipment.notes}"></td>
+                            </tbody>
+                        </table>
+                    </div>
+
             </TD>
         </tr>
     </table>

@@ -1,25 +1,34 @@
 package com.lorisoft.operate.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.lorisoft.operate.entity.Equipment;
+import com.lorisoft.operate.entity.EquipmentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
+import java.util.List;
+
 
 @Controller
 public class OperateController {
 
-private static final Logger log = LoggerFactory.getLogger(OperateController.class);
+    private final EquipmentRepository eRepo;
+    private static final Logger log = LoggerFactory.getLogger(OperateController.class);
 
    @Autowired
-    public OperateController() {
+    public OperateController(EquipmentRepository eRepo) {
+       this.eRepo = eRepo;
+    }
+
+    @ModelAttribute("allEquipment")
+    public Iterable<Equipment> populatePublications() {
+        return eRepo.findAll();
     }
 
    // index page
@@ -31,6 +40,7 @@ private static final Logger log = LoggerFactory.getLogger(OperateController.clas
     int dropZones = 10;
     int carRequests = 12;
     int trains = 14;
+
      model.addAttribute("townCount", towns);
      model.addAttribute("rollingStockCount", rollingStock);
      model.addAttribute("consigneeCount", consignees);
@@ -44,6 +54,7 @@ private static final Logger log = LoggerFactory.getLogger(OperateController.clas
    // equipment registry page
    @RequestMapping(value = "/equipment")
    public String equipment(Model model) {
+
       return "equipment";
    }
 
