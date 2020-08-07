@@ -6,12 +6,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -53,10 +56,37 @@ public class OperateController {
 
    // equipment registry page
    @RequestMapping(value = "/equipment")
-   public String equipment(Model model) {
+   public String add_equipment(Model model) {
 
       return "equipment";
    }
+
+
+
+    // equipment registry page
+    @RequestMapping(value = "/equipment/add")
+    public String equipment(Model model) {
+//       List<Equipment> allEquip = (List<Equipment>) model.getAttribute("allEquipment");
+//       allEquip.add(new Equipment());
+//       model.addAttribute("allEquipment", allEquip);
+       return "equipment/add";
+    }
+
+    // process result of filled in add form
+    @PostMapping("/equipment/save_add")
+    public String newIssue(@Valid Equipment equipment, BindingResult result, Model model) {
+        log.info("saving new equipment");
+        log.info(equipment.toString());
+
+        if (result.hasErrors()) {
+            return "equipment/add";
+        }
+        equipment.setId(34);
+        log.info(equipment.toString());
+        eRepo.save(equipment);
+        model.addAttribute("allEquipment", eRepo.findAll());
+        return "equipment";
+    }
 
    // modules page
    @RequestMapping(value = "/modules")

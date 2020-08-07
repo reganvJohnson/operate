@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>OPERATE</title>
+</head>
+<body>
+    <H1>ADD Equipment</H1>
+    <table border="0" cellspacing="0" cellpadding="10" height="5">
+        <tr>
+            <script src="menu.js?ver=1"></script>
+            <TD>
+                <div th:switch="${allEquipment}">
+                    <h2 th:case="null">No equipment yet!</h2>
+                    <div th:case="*">
+                        <h2>Users</h2>
+                        <form action="/equipment/save_add" method="post">
+                            <table border="3" cellspacing="0" cellpadding="10" height="5">
+                                <thead>
+                                <tr>
+                                    <th>Car Class</th>
+                                    <th>Description</th>
+                                    <th>Short Description</th>
+                                    <th>length</th>
+                                    <th>notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="equipment : ${allEquipment}">
+                                    <td th:text="${equipment.car_class}"></td>
+                                    <td th:text="${equipment.description}"></td>
+                                    <td th:text="${equipment.short_description}"></td>
+                                    <td th:text="${equipment.length}"></td>
+                                    <td th:text="${equipment.notes}"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" id="car_class" name="car_class" value=""></td>
+                                    <td><input type="text" id="description" name="description" value=""></td>
+                                    <td><input type="text" id="short_description" name="short_description" value=""></td>
+                                    <td><input type="text" id="length" name="length" value=""></td>
+                                    <td><input type="text" id="notes" name="notes" value=""></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+
+            </TD>
+        </tr>
+    </table>
+</body>
+</html>
