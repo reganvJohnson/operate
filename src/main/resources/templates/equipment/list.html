@@ -7,7 +7,7 @@
     <H1>Equipment</H1>
     <table border="0" cellspacing="0" cellpadding="10" height="5">
         <tr>
-            <script src="menu.js?ver=1"></script>
+            <script src="../menu.js?ver=1"></script>
             <TD>
                 <div th:switch="${allEquipment}">
                     <h2 th:case="null">No equipment yet!</h2>
@@ -17,23 +17,31 @@
                             <thead>
                             <tr>
                                 <th>Car Class</th>
+                                <th>Era</th>
                                 <th>Description</th>
                                 <th>Short Description</th>
+                                <th>AAR Code</th>
                                 <th>length</th>
                                 <th>notes</th>
+                                <th>delete</th>
+                                <th>edit</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="equipment : ${allEquipment}">
-                                <td th:text="${equipment.car_class}"></td>
+                                <td th:text="${equipment.car_class.classification}"></td>
+                                <td th:text="${equipment.era}"></td>
                                 <td th:text="${equipment.description}"></td>
                                 <td th:text="${equipment.short_description}"></td>
+                                <td th:text="${equipment.aar_code}"></td>
                                 <td th:text="${equipment.length}"></td>
                                 <td th:text="${equipment.notes}"></td>
+                                <td><a th:href="@{/equipment/delete/{id}(id=${equipment.id})}">Delete</a></td>
+                                <td><a th:href="@{/equipment/edit/{id}(id=${equipment.id})}">Edit</a></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
-
             </TD>
         </tr>
     </table>

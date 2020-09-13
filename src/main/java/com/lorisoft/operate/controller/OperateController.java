@@ -21,18 +21,7 @@ import java.util.List;
 @Controller
 public class OperateController {
 
-    private final EquipmentRepository eRepo;
     private static final Logger log = LoggerFactory.getLogger(OperateController.class);
-
-   @Autowired
-    public OperateController(EquipmentRepository eRepo) {
-       this.eRepo = eRepo;
-    }
-
-    @ModelAttribute("allEquipment")
-    public Iterable<Equipment> populatePublications() {
-        return eRepo.findAll();
-    }
 
    // index page
    @RequestMapping(value = "/index")
@@ -54,39 +43,6 @@ public class OperateController {
       return "index";
    }
 
-   // equipment registry page
-   @RequestMapping(value = "/equipment")
-   public String add_equipment(Model model) {
-
-      return "equipment";
-   }
-
-
-
-    // equipment registry page
-    @RequestMapping(value = "/equipment/add")
-    public String equipment(Model model) {
-//       List<Equipment> allEquip = (List<Equipment>) model.getAttribute("allEquipment");
-//       allEquip.add(new Equipment());
-//       model.addAttribute("allEquipment", allEquip);
-       return "equipment/add";
-    }
-
-    // process result of filled in add form
-    @PostMapping("/equipment/save_add")
-    public String newIssue(@Valid Equipment equipment, BindingResult result, Model model) {
-        log.info("saving new equipment");
-        log.info(equipment.toString());
-
-        if (result.hasErrors()) {
-            return "equipment/add";
-        }
-        equipment.setId(34);
-        log.info(equipment.toString());
-        eRepo.save(equipment);
-        model.addAttribute("allEquipment", eRepo.findAll());
-        return "equipment";
-    }
 
    // modules page
    @RequestMapping(value = "/modules")
