@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Select a new car from the list. This renders two select lists, the second is controlled by what is selected on the first</p>
+
+<select size=5 id="mySelect" onchange="myFunction2()">
+  <option value="module1">Audi</option>
+  <option value="module2">BMW</option>
+  <option value="module3">Mercedes</option>
+  <option value="module4">Volvo</option>
+</select>
+
+<select size=0 id="theOtherSelect" onchange="myFunction()">
+</select>
+
+<p>When you select a new car, a function is triggered which outputs the value of the selected car.</p>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+
+function myFunction2() {
+  var x = document.getElementById("mySelect").value;
+  var items;
+  if (x === "module1") {
+    items = ["track1.1", "track1.2", "track1.3"];
+  } 
+  if (x === "module2") {
+    items = ["track2.1", "track2.2"];
+  }
+  if (x === "module3") {
+    items = ["track3.1", "track3.2", "track3.3", "track3.4"];
+  }
+  if (x === "module4") {
+    items = ["track4.1", "track4.2", "track4.3"];
+  }
+
+  var str = ""
+  var len = 0
+  for (var item of items) {
+     len += 1;
+    str += "<option>" + item + "</option>"
+  }
+  document.getElementById("theOtherSelect").size = len;
+  document.getElementById("theOtherSelect").innerHTML = str;
+  document.getElementById('theOtherSelect').selectedIndex="0";
+
+}
+
+
+</script>
+
+</body>
+</html>

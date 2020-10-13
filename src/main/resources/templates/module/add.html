@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>OPERATE</title>
+</head>
+<body>
+<div class="container my-5">
+    <h2 class="mb-5">New Module</h2>
+    <table border="0" cellspacing="0" cellpadding="10" height="5">
+        <tr><td>            <script src="../menu.js?ver=1"></script></td>
+            <TD>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/module/save_add}"  method="post">
+                <div class="form-group col-md-6">
+                    <label  class="col-form-label">Full Name</label>
+                    <input type="text" th:field="${module.full_name}" class="form-control" id="full_name" name="full_name" value=""><br/>
+                    <label  class="col-form-label">Short Name</label>
+                    <input type="text" th:field="${module.short_name}" class="form-control" id="short_name" name="short_name" value=""><br/>
+                    <label  class="col-form-label">Owner</label>
+                    <input type="text" th:field="${module.owner}" class="form-control" id="owner" name="owner" value=""><br/>
+                    <label  class="col-form-label">Size</label>
+                    <input type="text" th:field="${module.size}" class="form-control" id="size" name="size" value=""><br/>
+                    <label  class="col-form-label">Passing Siding</label>
+                    <input type="text" th:field="${module.passing_siding}" class="form-control" id="passing_siding" name="passing_siding" value=""><br/>
+                    <label  class="col-form-label">Description</label>
+                    <textarea rows="4" cols="100" th:field="${module.description}"></textarea><br/>
+                    <label  class="col-form-label">Notes</label>
+                    <textarea rows="4" cols="100" th:field="${module.notes}"></textarea><br/>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="btn btn-primary" value="Add Issue">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+            </TD>
+        </tr>
+    </table>
+</div>
+
+<!--
+    <H1>ADD Equipment</H1>
+    <table border="0" cellspacing="0" cellpadding="10" height="5">
+        <tr>
+            <script src="menu.js?ver=1"></script>
+            <TD>
+                <div th:switch="${allEquipment}">
+                    <h2 th:case="null">No equipment yet!</h2>
+                    <div th:case="*">
+                        <h2>Users</h2>
+                        <form action="#" th:action="@{/equipment/save_add}" th:object="${equipment}" method="post">
+                            <table border="3" cellspacing="0" cellpadding="10" height="5">
+                                <thead>
+                                <tr>
+                                    <th>Car Class</th>
+                                    <th>Era</th>
+                                    <th>Description</th>
+                                    <th>Short Description</th>
+                                    <th>AAR Code</th>
+                                    <th>length</th>
+                                    <th>notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="equipment : ${allEquipment}">
+                                    <td th:text="${equipment.car_class.classification}"></td>
+                                    <td th:text="${equipment.era}"></td>
+                                    <td th:text="${equipment.description}"></td>
+                                    <td th:text="${equipment.short_description}"></td>
+                                    <td th:text="${equipment.aar_code}"></td>
+                                    <td th:text="${equipment.length}"></td>
+                                    <td th:text="${equipment.notes}"></td>
+                                </tr>
+                                <tr>
+                                    <select th:field="*{equipment.car_class}">
+                                        <option th:each="carClass : ${allCarClasses}" th:value="${carClass.id}" th:text="${carClass.classification}"></option>
+                                    </select>
+                                    <td><input type="text" id="era" name="era" value=""></td>
+                                    <td><input type="text" id="description" name="description" value=""></td>
+                                    <td><input type="text" id="short_description" name="short_description" value=""></td>
+                                    <td><input type="text" id="aar_code" name="aar_code" value=""></td>
+                                    <td><input type="text" id="length" name="length" value=""></td>
+                                    <td><input type="text" id="notes" name="notes" value=""></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+
+            </TD>
+        </tr>
+    </table>
+-->
+</body>
+</html>

@@ -1,5 +1,6 @@
-package com.lorisoft.operate.entity;
+package com.lorisoft.operate.Repository;
 
+import com.lorisoft.operate.entity.CarClass;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CarClassRepository extends CrudRepository<CarClass, Integer> {
@@ -10,4 +11,5 @@ public interface CarClassRepository extends CrudRepository<CarClass, Integer> {
 
 //   @Query("FROM Issue where lower(articles) like lower(concat('%', ?1,'%'))")
 //    List<Issue> findBySimpleQuery(String firstName);
+
 }

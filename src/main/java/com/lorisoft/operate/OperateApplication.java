@@ -1,7 +1,7 @@
 package com.lorisoft.operate;
 
 import com.lorisoft.operate.entity.Equipment;
-import com.lorisoft.operate.entity.EquipmentRepository;
+import com.lorisoft.operate.Repository.EquipmentRepository;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

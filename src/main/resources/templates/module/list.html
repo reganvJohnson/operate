@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>OPERATE</title>
+</head>
+<style>
+   select {
+    overflow-y: auto;
+}
+</style>
+<script th:inline="javascript">
+
+function myFunctionModulxxe() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+
+// changing the module selected affects the Consignee selection list.
+function moduleSelect() {
+  var x = document.getElementById("moduleSelect").value;
+    document.getElementById("demo").innerHTML = "You2 selected: " + x;
+
+  rooter = /*[[${consigneeStuff}]]*/ null;
+  var items = rooter[x];
+
+  var str = ""
+  for (var item of items) {
+    str += "<option value=\"" +item.id + "\">" + `${item.name}` + "</option>"
+  }
+  document.getElementById("consigneeSelect").innerHTML = str;
+  document.getElementById('consigneeSelect').selectedIndex="-1";
+  document.getElementById("demo1").innerHTML = "You selected: " + str;
+  document.getElementById("editModule").setAttribute('onclick', "location.href='/module/edit/" + x + "'");
+//  <td><a th:href="@{/module/edit/{id}(id=${module.id})}">Edit</a></td>
+}
+
+
+// changing the consignee selected affects the zone selection list.
+function consigneeSelect() {
+
+  var x = document.getElementById("consigneeSelect").value;
+  document.getElementById("demo").innerHTML = "You selected: 1 " + x;
+
+  rooter = /*[[${zoneStuff}]]*/ null;
+  document.getElementById("demo").innerHTML = "You selected: 2 " + rooter;
+  var items = rooter[x];
+//  document.getElementById("demo").innerHTML = "You selected: 3 " + items;
+
+  var str = ""
+  for (var item of items) {
+   document.getElementById("demo1").innerHTML = "You selected: " + item;
+    str += "<option value=\"" +item.id + "\">" + item.drop_zone + "</option>"
+  }
+  document.getElementById("zoneSelect").innerHTML = str;
+  document.getElementById('zoneSelect').selectedIndex="-1";
+  document.getElementById('idbutton').innerHTML = x;
+//  document.getElementById("demo1").innerHTML = "You selected: " + str;
+}
+
+</script>
+
+<body>
+<button id="idbutton" onclick="location.href='http://www.example.com'" type="button">www.example.com</button>
+<p id="demo">empty</p>
+<textarea id="demo1" name="w3review" rows="4" cols="50">
+At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+</textarea>
+
+    <H1>Modules</H1>
+    <table border="0" cellspacing="0" cellpadding="10" height="5">
+        <tr>
+            <script src="../menu.js?ver=1"></script>
+            <td>
+                <table border="1">
+                    <thead>
+                       <td>Modules/Towns</td>
+                       <td>Consignees</td>
+                       <td>spots</td>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <button onclick="location.href='http://www.example.com'" type="button">add</button>
+                            <button id="editModule" onclick="location.href='http://www.example.com'" type="button">edit</button>
+                            <button onclick="location.href='http://www.example.com'" type="button">delete</button>
+                        </td>
+<td>
+    <button onclick="location.href='http://www.example.com'" type="button">add</button>
+    <button id="editModule0" onclick="location.href='http://www.example.com'" type="button">edit</button>
+    <button onclick="location.href='http://www.example.com'" type="button">delete</button>
+</td>
+<td>
+    <button onclick="location.href='http://www.example.com'" type="button">add</button>
+    <button id="editModule0" onclick="location.href='http://www.example.com'" type="button">edit</button>
+    <button onclick="location.href='http://www.example.com'" type="button">delete</button>
+</td>                    </tr>
+                    <tr>
+                        <td>
+
+                        <select th:size="${maxSize}" id="moduleSelect" onchange="moduleSelect()">
+                          <option th:each="module : ${allModules}" th:value="${module.id}" th:text="${module.short_name}">
+                         /td>
+                        </option>
+                        </select>
+                        </td><td>
+                        <select th:size="${maxSize}" id="consigneeSelect" onchange="consigneeSelect()">
+                        </select>
+                    </td>
+                           <td>
+                            <select th:size="${maxSize}" id="zoneSelect">
+                            </select>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr th:each="module : ${allModules}">
+                                        <td th:text="${module.short_name}"></td>
+                                        <td><a th:href="@{/module/delete/{id}(id=${module.id})}">Delete</a></td>
+                                        <td><a th:href="@{/module/edit/{id}(id=${module.id})}">Edit</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td> <a href="/module/add">Add a new module</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td> second table to do </td>
+                            <td> third table to do</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,5 +1,7 @@
-package com.lorisoft.operate.entity;
+package com.lorisoft.operate.Repository;
 
+import com.lorisoft.operate.entity.Equipment;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
     public interface EquipmentRepository extends CrudRepository<Equipment, Integer> {
@@ -10,4 +12,9 @@ import org.springframework.data.repository.CrudRepository;
 
 //   @Query("FROM Issue where lower(articles) like lower(concat('%', ?1,'%'))")
 //    List<Issue> findBySimpleQuery(String firstName);
+
+        // Trick here, is that the table in the query, needs to be spelled like the class
+        // so I select from Equipment. *sigh
+        @Query("select count(*) from Equipment")
+        Integer equipmentCount();
 }

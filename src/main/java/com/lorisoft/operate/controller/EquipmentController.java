@@ -1,9 +1,9 @@
 package com.lorisoft.operate.controller;
 
 import com.lorisoft.operate.entity.CarClass;
-import com.lorisoft.operate.entity.CarClassRepository;
+import com.lorisoft.operate.Repository.CarClassRepository;
 import com.lorisoft.operate.entity.Equipment;
-import com.lorisoft.operate.entity.EquipmentRepository;
+import com.lorisoft.operate.Repository.EquipmentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class EquipmentController {
 
 
    // equipment registry page
-   @RequestMapping(value = "/equipment/list")
+   @RequestMapping(value = {"/equipment/list", "/equipment"})
    public String add_equipment(Model model) {
        for (Equipment equip: eRepo.findAll()) {
            System.out.println(equip);
